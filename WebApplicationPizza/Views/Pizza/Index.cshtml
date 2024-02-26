@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplicationPizza.Models.Pizza>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pizza List</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td> *@
+            @* <td>
+                @Html.ActionLink("Edit", "Edit","PizzaController", new { id=item.PizzaId}) |
+                @Html.ActionLink("Details", "Details","PizzaController", new { id=item.PizzaId}) |
+                @Html.ActionLink("Delete", "Delete","PizzaController", new {  id=item.PizzaId})
+            </td> *@
+            <td>
+                @Html.ActionLink("Add to Cart","Cart",new{id = item.PizzaId}) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
